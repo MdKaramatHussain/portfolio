@@ -119,7 +119,7 @@ export default function PortfolioPage() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { title: "React E-commerce Platform", image: "/placeholder.svg" },
-                { title: "Mobile App for Fitness Tracking", image: "/gym-apppng" },
+                { title: "Mobile App for Fitness Tracking", image: "/gym-app.png" },
                 { title: "CMS-Powered News Portal", image: "/placeholder.svg" },
               ].map((project, index) => (
                 <div key={index} className="relative group overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
