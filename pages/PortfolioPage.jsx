@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Code, Laptop, Smartphone, Database, Send, Phone, Mail, ChevronRight } from "lucide-react"
+import { Code, Laptop, Smartphone, Database, Send, Phone, Mail, ChevronRight, Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function PortfolioPage() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,18 +29,21 @@ export default function PortfolioPage() {
             alt="Visionary Tech Squad Logo"
             width={120}
             height={92}
-            className="h-20 w-auto"
+            className="h-16 w-auto"
           />
           <span className="sr-only">Visionary Tech Squad</span>
         </Link>
-        <nav className="ml-auto flex gap-6 sm:gap-8">
+        <nav className={`ml-auto flex gap-6 sm:gap-8 ${isMenuOpen ? 'flex-col absolute top-24 left-0 right-0 bg-white p-4 shadow-lg' : 'hidden md:flex'}`}>
           {["About", "Services", "Portfolio", "Contact"].map((item) => (
-            <Link key={item} className="text-lg font-medium text-gray-600 hover:text-[#00cccc] transition-colors relative group" href={`#${item.toLowerCase()}`}>
+            <Link key={item} className="text-lg font-medium text-gray-600 hover:text-[#00cccc] transition-colors relative group" href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)}>
               {item}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00cccc] transition-all group-hover:w-full"></span>
             </Link>
           ))}
         </nav>
+        <button className="ml-auto md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Menu className="h-6 w-6 text-gray-600" />
+        </button>
       </header>
       <main className="flex-1">
         <section className="w-full py-20 md:py-32 lg:py-48 overflow-hidden relative">
@@ -115,7 +119,7 @@ export default function PortfolioPage() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { title: "React E-commerce Platform", image: "/placeholder.svg" },
-                { title: "Mobile App for Fitness Tracking", image: "/gym-app.png" },
+                { title: "Mobile App for Fitness Tracking", image: "/gym-apppng" },
                 { title: "CMS-Powered News Portal", image: "/placeholder.svg" },
               ].map((project, index) => (
                 <div key={index} className="relative group overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
